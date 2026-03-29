@@ -88,8 +88,6 @@ class ProfileRepository:
         self.settings = settings
         self.data_path = Path(__file__).resolve().parent.parent / "data" / "local_store.json"
         self.uploads_dir = Path(__file__).resolve().parent.parent / "static" / "uploads"
-        self.data_path.parent.mkdir(parents=True, exist_ok=True)
-        self.uploads_dir.mkdir(parents=True, exist_ok=True)
         self.anon_client = None
         self.service_client = None
 
@@ -111,6 +109,8 @@ class ProfileRepository:
             )
 
         if not self.is_remote:
+            self.data_path.parent.mkdir(parents=True, exist_ok=True)
+            self.uploads_dir.mkdir(parents=True, exist_ok=True)
             self._ensure_store()
 
     @property
