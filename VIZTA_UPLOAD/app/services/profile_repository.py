@@ -200,9 +200,13 @@ class ProfileRepository:
             if not email:
                 return None, None
 
-            auth_response = self.anon_client.auth.sign_in_with_password(
-                {"email": email, "password": password}
-            )
+            try:
+                auth_response = self.anon_client.auth.sign_in_with_password(
+                    {"email": email, "password": password}
+                )
+            except Exception:
+                return None, None
+
             session = getattr(auth_response, "session", None)
             user = getattr(auth_response, "user", None)
             if not session or not user:
