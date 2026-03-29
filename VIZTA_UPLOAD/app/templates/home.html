@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block body %}
+<main class="site-shell">
+    <section class="hero">
+        <div class="brand-bar">
+            <span class="brand-mark">VIZTA</span>
+            <a class="ghost-link" href="/login">Panel klienta</a>
+        </div>
+        <div class="hero-grid">
+            <div class="hero-copy">
+                <p class="eyebrow">Profesjonalna tożsamość NFC</p>
+                <h1>Profesjonalna obecność marki dostępna po jednym tapnięciu.</h1>
+                <p class="lead">
+                    VIZTA łączy każdą fizyczną wizytówkę NFC z dopracowanym profilem cyfrowym,
+                    zawierającym najważniejsze linki, dane kontaktowe i spójny wizerunek marki.
+                </p>
+                <div class="hero-actions">
+                    <a class="button button-primary" href="#profiles">Zobacz profile</a>
+                    <a class="button button-secondary" href="/u/aleksandra-nowak">Otwórz profil demo</a>
+                </div>
+            </div>
+            <div class="card-stage">
+                <article class="hero-card">
+                    <span class="card-chip"></span>
+                    <div class="card-copy">
+                        <p>VIZTA NFC CARD</p>
+                        <strong>Stworzone z myślą o wiarygodnym pierwszym wrażeniu i szybszym kontakcie.</strong>
+                    </div>
+                    <div class="pulse-ring"></div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="feature-strip">
+        <article>
+            <span>01</span>
+            <h2>Profesjonalny profil</h2>
+            <p>Każda wizytówka otwiera dedykowaną stronę osoby zamiast przypadkowej listy linków lub danych kontaktowych.</p>
+        </article>
+        <article>
+            <span>02</span>
+            <h2>Spójność marki</h2>
+            <p>Całe doświadczenie pozostaje zgodne z wizerunkiem firmy i nie przypomina zewnętrznego agregatora linków.</p>
+        </article>
+        <article>
+            <span>03</span>
+            <h2>Gotowe do rozwoju</h2>
+            <p>Python na Vercel i dane profili w Supabase dają czysty fundament MVP pod realny produkt.</p>
+        </article>
+    </section>
+
+    <section class="feature-strip feature-strip--secondary">
+        <article>
+            <span>04</span>
+            <h2>Logowanie startowe</h2>
+            <p>Każda karta może być przypisana do użytkownika z gotowym loginem i hasłem tymczasowym do pierwszego wejścia.</p>
+        </article>
+        <article>
+            <span>05</span>
+            <h2>Własny panel</h2>
+            <p>Użytkownik sam wybiera, które profile społecznościowe mają być widoczne oraz uzupełnia opis i zdjęcie.</p>
+        </article>
+        <article>
+            <span>06</span>
+            <h2>Kontrola profilu</h2>
+            <p>Po zalogowaniu może od razu zmienić dane na stronie bez potrzeby kontaktu z administratorem.</p>
+        </article>
+    </section>
+
+    <section class="profiles-section" id="profiles">
+        <div class="section-heading">
+            <p class="eyebrow">Profile publiczne</p>
+            <h2>Każda wizytówka NFC może prowadzić do dopracowanego profilu biznesowego.</h2>
+        </div>
+        <div class="profile-grid">
+            {% for profile in featured_profiles %}
+            <a class="profile-preview" href="/u/{{ profile.slug }}" style="--accent: {{ profile.accent }};">
+                <div class="profile-preview__glow"></div>
+                <p class="profile-preview__name">{{ profile.full_name }}</p>
+                <p class="profile-preview__meta">{{ profile.title }} &middot; {{ profile.company }}</p>
+                <p class="profile-preview__bio">{{ profile.headline }}</p>
+                <span class="profile-preview__cta">Otwórz profil</span>
+            </a>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+{% endblock %}

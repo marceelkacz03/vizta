@@ -1,0 +1,1 @@
+"""VIZTA application package."""

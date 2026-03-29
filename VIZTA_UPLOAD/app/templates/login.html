@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block body %}
+<main class="auth-shell">
+    <section class="auth-card">
+        <a class="back-link" href="/">VIZTA</a>
+        <p class="eyebrow">Panel klienta</p>
+        <h1>Zaloguj się do swojego profilu</h1>
+        <p class="auth-copy">
+            Użyj loginu i hasła startowego przypisanego do Twojej wizytówki NFC.
+            Przy pierwszym wejściu poprosimy Cię o ustawienie nowego hasła.
+        </p>
+
+        {% if error %}
+        <div class="form-alert">{{ error }}</div>
+        {% endif %}
+
+        <form class="auth-form" method="post" action="/login">
+            <label class="field">
+                <span>Login lub e-mail</span>
+                <input type="text" name="username" value="{{ username }}" autocomplete="username" required>
+            </label>
+            <label class="field">
+                <span>Hasło</span>
+                <input type="password" name="password" autocomplete="current-password" required>
+            </label>
+            <button class="button button-primary button-block" type="submit">Zaloguj się</button>
+        </form>
+    </section>
+</main>
+{% endblock %}

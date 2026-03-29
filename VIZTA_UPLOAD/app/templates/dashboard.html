@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block body %}
+<main class="dashboard-shell">
+    <section class="dashboard-header">
+        <div>
+            <p class="eyebrow">Panel użytkownika</p>
+            <h1>Zarządzaj swoją wizytówką NFC</h1>
+            <p class="auth-copy">
+                Edytuj dane widoczne publicznie, ustaw zdjęcie profilowe i wybierz linki,
+                które mają pojawić się na Twojej stronie.
+            </p>
+        </div>
+        <div class="dashboard-actions">
+            <a class="button button-secondary" href="/u/{{ dashboard.profile.slug }}">Zobacz profil publiczny</a>
+            <form method="post" action="/wyloguj">
+                <button class="button button-secondary" type="submit">Wyloguj się</button>
+            </form>
+        </div>
+    </section>
+
+    {% if saved %}
+    <div class="form-success">Zmiany zostały zapisane.</div>
+    {% endif %}
+
+    {% if error %}
+    <div class="form-alert">{{ error }}</div>
+    {% endif %}
+
+    <form class="dashboard-grid" method="post" action="/panel" enctype="multipart/form-data">
+        <section class="dashboard-card">
+            <p class="eyebrow">Dane podstawowe</p>
+            <div class="form-grid">
+                <label class="field">
+                    <span>Imię i nazwisko</span>
+                    <input type="text" name="full_name" value="{{ dashboard.profile.full_name }}" required>
+                </label>
+                <label class="field">
+                    <span>Stanowisko</span>
+                    <input type="text" name="title" value="{{ dashboard.profile.title }}" required>
+                </label>
+                <label class="field">
+                    <span>Lokalizacja</span>
+                    <input type="text" name="location" value="{{ dashboard.profile.location }}" required>
+                </label>
+                <label class="field field-wide">
+                    <span>Krótki nagłówek</span>
+                    <input type="text" name="headline" value="{{ dashboard.profile.headline }}" required>
+                </label>
+                <label class="field field-wide">
+                    <span>Opis</span>
+                    <textarea name="bio" rows="6" required>{{ dashboard.profile.bio }}</textarea>
+                </label>
+            </div>
+        </section>
+
+        <section class="dashboard-card">
+            <p class="eyebrow">Zdjęcie profilowe</p>
+            <div class="avatar-editor">
+                <div class="profile-avatar profile-avatar--large">
+                    {% if dashboard.profile.avatar_url %}
+                    <img src="{{ dashboard.profile.avatar_url }}" alt="{{ dashboard.profile.full_name }}">
+                    {% else %}
+                    <span>{{ dashboard.profile.full_name[:1] }}</span>
+                    {% endif %}
+                </div>
+                <div class="avatar-editor__controls">
+                    <label class="field">
+                        <span>Wgraj nowe zdjęcie</span>
+                        <input type="file" name="avatar" accept="image/png,image/jpeg,image/webp,image/gif">
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" name="remove_avatar" value="1">
+                        <span>Usuń obecne zdjęcie</span>
+                    </label>
+                    <p class="field-hint">Najlepiej sprawdzi się kwadratowe zdjęcie portretowe.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="dashboard-card dashboard-card--full">
+            <p class="eyebrow">Widoczne przekierowania</p>
+            <div class="platform-grid">
+                {% for platform in dashboard.platform_choices %}
+                <div class="platform-item">
+                    <label class="checkbox">
+                        <input type="checkbox" name="enabled_platforms" value="{{ platform.key }}" {% if platform.enabled %}checked{% endif %}>
+                        <span>{{ platform.label }}</span>
+                    </label>
+                    <input
+                        type="text"
+                        name="url_{{ platform.key }}"
+                        value="{{ platform.url }}"
+                        placeholder="{{ platform.placeholder }}"
+                    >
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="dashboard-card dashboard-card--full dashboard-card--footer">
+            <div>
+                <p class="dashboard-note">Login: <strong>{{ dashboard.user.username }}</strong></p>
+                <p class="dashboard-note">Adres publiczny: <strong>/u/{{ dashboard.profile.slug }}</strong></p>
+                <p class="dashboard-note">Adres NFC: <strong>/c/{{ dashboard.profile.card_code }}</strong></p>
+            </div>
+            <button class="button button-primary" type="submit">Zapisz zmiany</button>
+        </section>
+    </form>
+</main>
+{% endblock %}

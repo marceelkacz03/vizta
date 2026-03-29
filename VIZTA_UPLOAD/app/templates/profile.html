@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% macro icon(name) -%}
+    {% if name == "instagram" -%}
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.5" cy="6.5" r="1.2"></circle></svg>
+    {% elif name == "linkedin" -%}
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"></rect><rect x="7" y="10" width="2.5" height="7"></rect><circle cx="8.2" cy="7.5" r="1.2"></circle><path d="M12 10h2.4v1.2c.6-.9 1.6-1.5 3-1.5 2.4 0 3.6 1.4 3.6 4.2V17h-2.5v-2.8c0-1.4-.5-2.2-1.7-2.2-1.3 0-2 .9-2 2.2V17H12z"></path></svg>
+    {% elif name == "facebook" -%}
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-5 2.2-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.6.4-1 1-1z"></path></svg>
+    {% elif name == "x" -%}
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l16 16"></path><path d="M20 4L4 20"></path></svg>
+    {% elif name == "tiktok" -%}
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.8 4c.5 1.7 1.6 3 3.2 3.6V10c-1.3 0-2.4-.3-3.5-.9v4.8c0 3.5-2.4 5.7-5.7 5.7-3.1 0-5.3-2.3-5.3-5.1 0-3 2.4-5.2 5.6-5.2.4 0 .7 0 1 .1v2.7c-.3-.1-.6-.2-.9-.2-1.6 0-2.8 1-2.8 2.6 0 1.5 1.1 2.5 2.6 2.5 1.7 0 2.7-1.1 2.7-3V4z"></path></svg>
+    {% elif name == "youtube" -%}
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="4"></rect><path d="M11 10l4 2-4 2z"></path></svg>
+    {% elif name == "whatsapp" -%}
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.6c0 4.4-3.6 8-8 8-1.3 0-2.6-.3-3.7-.9L4 20l1.4-4.1c-.8-1.3-1.2-2.8-1.2-4.3 0-4.4 3.6-8 8-8s8 3.6 8 8z"></path><path d="M9.4 8.7c.2-.4.4-.4.7-.4h.5c.2 0 .4 0 .5.4l.7 1.7c.1.2.1.4 0 .6l-.4.6c-.1.1-.1.2 0 .4.2.4.6 1 1.2 1.5.7.6 1.3.8 1.7 1 .2.1.3 0 .4-.1l.7-.8c.2-.2.4-.2.6-.1l1.6.8c.2.1.4.2.4.5v.4c0 .3-.1.5-.4.7-.5.3-1.2.5-1.9.4-1.1-.2-2.4-.7-4-2.2-1.9-1.8-2.6-3.6-2.8-4.7-.1-.7.1-1.3.3-1.7z"></path></svg>
+    {% elif name == "mail" -%}
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M5 7l7 5 7-5"></path></svg>
+    {% elif name == "calendar" -%}
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M7 3v4M17 3v4M3 10h18"></path></svg>
+    {% elif name == "globe" -%}
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3c2.5 2.6 4 5.8 4 9s-1.5 6.4-4 9c-2.5-2.6-4-5.8-4-9s1.5-6.4 4-9z"></path></svg>
+    {% else -%}
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14l4-4"></path><path d="M8.5 16.5l-2 2a3 3 0 1 1-4.2-4.2l2-2"></path><path d="M15.5 7.5l2-2a3 3 0 0 1 4.2 4.2l-2 2"></path></svg>
+    {% endif -%}
+{%- endmacro %}
+
+{% block body %}
+<main class="profile-shell" style="--profile-accent: {{ profile.accent }};">
+    <div class="ambient-shape ambient-shape--one"></div>
+    <div class="ambient-shape ambient-shape--two"></div>
+
+    <section class="profile-card">
+        <a class="back-link" href="/">VIZTA</a>
+        <div class="profile-intro">
+            <div class="profile-avatar">
+                {% if profile.avatar_url %}
+                <img src="{{ profile.avatar_url }}" alt="{{ profile.full_name }}">
+                {% else %}
+                <span>{{ profile.full_name[:1] }}</span>
+                {% endif %}
+            </div>
+            <div>
+                <p class="eyebrow">{{ profile.company }}</p>
+                <h1>{{ profile.full_name }}</h1>
+                <p class="profile-meta">{{ profile.title }} &middot; {{ profile.location }}</p>
+            </div>
+        </div>
+
+        <p class="profile-headline">{{ profile.headline }}</p>
+        <p class="profile-bio">{{ profile.bio }}</p>
+
+        <div class="link-stack">
+            {% for link in profile.links %}
+            <a class="profile-link {% if link.highlighted %}profile-link--highlighted{% endif %}" href="{{ link.url }}" target="_blank" rel="noreferrer">
+                <span class="profile-link__icon">{{ icon(link.icon) }}</span>
+                <span>{{ link.label }}</span>
+            </a>
+            {% endfor %}
+        </div>
+
+        <div class="profile-footer">
+            <span>Obsługiwane przez {{ app_name }}</span>
+            {% if profile.card_code %}
+            <span>Adres NFC: /c/{{ profile.card_code }}</span>
+            {% endif %}
+        </div>
+        {% if current_user and current_user.slug == profile.slug %}
+        <div class="profile-owner-actions">
+            <a class="button button-secondary" href="/panel">Edytuj swój profil</a>
+        </div>
+        {% endif %}
+    </section>
+</main>
+{% endblock %}
