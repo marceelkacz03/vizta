@@ -167,6 +167,18 @@ svg {
     background: rgba(255, 255, 255, 0.03);
 }
 
+.button-secondary--muted {
+    border-color: rgba(255, 255, 255, 0.24);
+    background: linear-gradient(180deg, rgba(197, 197, 190, 0.28), rgba(120, 120, 115, 0.18));
+    color: #f0f0eb;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.button-secondary--muted:hover {
+    border-color: rgba(255, 255, 255, 0.34);
+    background: linear-gradient(180deg, rgba(210, 210, 202, 0.34), rgba(135, 135, 128, 0.24));
+}
+
 .card-stage {
     display: grid;
     place-items: center;
