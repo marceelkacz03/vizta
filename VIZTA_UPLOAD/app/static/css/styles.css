@@ -185,10 +185,9 @@ svg {
 }
 
 .hero-card {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-content: start;
     width: min(420px, 100%);
     min-height: 470px;
     padding: 34px;
@@ -200,8 +199,8 @@ svg {
 }
 
 .card-portrait {
-    width: 182px;
-    height: 232px;
+    width: 206px;
+    height: 262px;
     border-radius: 28px;
     background:
         linear-gradient(160deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.04)),
@@ -224,9 +223,10 @@ svg {
     left: auto;
     right: auto;
     bottom: auto;
-    margin-top: auto;
-    max-width: 12ch;
-    padding-right: 136px;
+    margin-top: 34px;
+    width: min(248px, calc(100% - 24px));
+    max-width: none;
+    padding-right: 0;
     z-index: 1;
 }
 
@@ -243,13 +243,14 @@ svg {
     display: block;
     margin-top: 10px;
     font-family: "Fraunces", Georgia, serif;
-    font-size: 2rem;
-    line-height: 1.04;
+    font-size: 1.76rem;
+    line-height: 1.12;
+    text-wrap: balance;
 }
 
 .pulse-ring {
     position: absolute;
-    inset: auto 32px 150px auto;
+    inset: auto 28px 30px auto;
     width: 170px;
     height: 170px;
     border-radius: 50%;
@@ -410,16 +411,16 @@ svg {
 }
 
 .profile-avatar--profile {
-    width: 220px;
-    height: 220px;
-    border-radius: 42px;
-    font-size: 4.8rem;
+    width: 252px;
+    height: 252px;
+    border-radius: 46px;
+    font-size: 5.2rem;
     flex-shrink: 0;
     box-shadow: 0 20px 48px rgba(0, 0, 0, 0.28);
 }
 
 .profile-avatar--profile img {
-    border-radius: 42px;
+    border-radius: 46px;
 }
 
 .profile-card h1 {
@@ -749,6 +750,27 @@ svg {
         min-height: 380px;
     }
 
+    .card-portrait {
+        width: 178px;
+        height: 224px;
+    }
+
+    .card-copy {
+        margin-top: 24px;
+        width: min(240px, calc(100% - 18px));
+        max-width: none;
+    }
+
+    .card-copy strong {
+        font-size: 1.56rem;
+    }
+
+    .pulse-ring {
+        width: 132px;
+        height: 132px;
+        inset: auto 22px 24px auto;
+    }
+
     .avatar-editor {
         align-items: center;
     }
@@ -793,32 +815,34 @@ svg {
     }
 
     .hero-card {
-        min-height: 320px;
+        min-height: 370px;
         padding: 24px;
     }
 
     .card-portrait {
-        width: 108px;
-        height: 134px;
+        width: 148px;
+        height: 188px;
         border-radius: 22px;
     }
 
     .card-copy {
-        max-width: 100%;
+        margin-top: 20px;
+        width: min(100%, 228px);
+        max-width: none;
         padding-right: 0;
     }
 
     .card-copy strong {
         max-width: none;
-        font-size: 1.45rem;
+        font-size: 1.42rem;
         line-height: 1.12;
     }
 
     .pulse-ring {
-        width: 108px;
-        height: 108px;
-        right: 20px;
-        bottom: 126px;
+        width: 96px;
+        height: 96px;
+        right: 18px;
+        bottom: 20px;
         box-shadow:
             0 0 0 12px rgba(255, 255, 255, 0.03),
             0 0 0 28px rgba(255, 255, 255, 0.02);
@@ -847,13 +871,13 @@ svg {
     }
 
     .profile-avatar--profile {
-        width: 170px;
-        height: 170px;
-        border-radius: 32px;
-        font-size: 3.5rem;
+        width: 196px;
+        height: 196px;
+        border-radius: 36px;
+        font-size: 4rem;
     }
 
     .profile-avatar--profile img {
-        border-radius: 32px;
+        border-radius: 36px;
     }
 }
