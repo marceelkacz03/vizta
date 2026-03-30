@@ -199,6 +199,12 @@ svg {
         rgba(8, 8, 8, 0.9);
 }
 
+.card-profile {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
 .card-portrait {
     width: 168px;
     height: 168px;
@@ -217,6 +223,51 @@ svg {
     height: 100%;
     object-fit: cover;
     object-position: center 18%;
+}
+
+.card-persona {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+}
+
+.card-persona__name,
+.card-persona__role {
+    margin: 0;
+}
+
+.card-persona__name {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.card-persona__role {
+    color: var(--muted);
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.card-persona__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #d9d9d3;
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.card-persona__tag svg {
+    width: 16px;
+    height: 16px;
 }
 
 .card-copy {
@@ -756,6 +807,19 @@ svg {
         border-radius: 32px;
     }
 
+    .card-profile {
+        gap: 14px;
+    }
+
+    .card-persona__name {
+        font-size: 1.28rem;
+    }
+
+    .card-persona__tag {
+        padding: 7px 10px;
+        font-size: 0.72rem;
+    }
+
     .card-copy {
         margin-top: 24px;
         width: min(252px, calc(100% - 24px));
@@ -824,6 +888,24 @@ svg {
         width: 126px;
         height: 126px;
         border-radius: 28px;
+    }
+
+    .card-profile {
+        align-items: start;
+        gap: 12px;
+    }
+
+    .card-persona__name {
+        font-size: 1.05rem;
+    }
+
+    .card-persona__role {
+        font-size: 0.75rem;
+    }
+
+    .card-persona__tag {
+        padding: 6px 9px;
+        font-size: 0.68rem;
     }
 
     .card-copy {
