@@ -187,6 +187,7 @@ svg {
 .hero-card {
     display: grid;
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
     align-content: start;
     width: min(420px, 100%);
     min-height: 470px;
@@ -199,11 +200,10 @@ svg {
 }
 
 .card-portrait {
-    width: 206px;
-    height: 262px;
-    border-radius: 28px;
+    width: 168px;
+    height: 168px;
+    border-radius: 36px;
     background:
-        linear-gradient(160deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.04)),
         linear-gradient(145deg, #d9d9d2, #5f5f5b);
     overflow: hidden;
     box-shadow:
@@ -212,10 +212,11 @@ svg {
 }
 
 .card-portrait img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
+    object-position: center 18%;
 }
 
 .card-copy {
@@ -223,8 +224,8 @@ svg {
     left: auto;
     right: auto;
     bottom: auto;
-    margin-top: 34px;
-    width: min(248px, calc(100% - 24px));
+    margin-top: 24px;
+    width: min(274px, calc(100% - 18px));
     max-width: none;
     padding-right: 0;
     z-index: 1;
@@ -243,16 +244,15 @@ svg {
     display: block;
     margin-top: 10px;
     font-family: "Fraunces", Georgia, serif;
-    font-size: 1.76rem;
-    line-height: 1.12;
-    text-wrap: balance;
+    font-size: 1.48rem;
+    line-height: 1.14;
 }
 
 .pulse-ring {
     position: absolute;
-    inset: auto 28px 30px auto;
-    width: 170px;
-    height: 170px;
+    inset: auto 24px 26px auto;
+    width: 148px;
+    height: 148px;
     border-radius: 50%;
     border: 1px solid rgba(255, 255, 255, 0.14);
     box-shadow:
@@ -751,23 +751,24 @@ svg {
     }
 
     .card-portrait {
-        width: 178px;
-        height: 224px;
+        width: 154px;
+        height: 154px;
+        border-radius: 32px;
     }
 
     .card-copy {
         margin-top: 24px;
-        width: min(240px, calc(100% - 18px));
+        width: min(252px, calc(100% - 24px));
         max-width: none;
     }
 
     .card-copy strong {
-        font-size: 1.56rem;
+        font-size: 1.32rem;
     }
 
     .pulse-ring {
-        width: 132px;
-        height: 132px;
+        width: 118px;
+        height: 118px;
         inset: auto 22px 24px auto;
     }
 
@@ -815,32 +816,32 @@ svg {
     }
 
     .hero-card {
-        min-height: 370px;
+        min-height: 412px;
         padding: 24px;
     }
 
     .card-portrait {
-        width: 148px;
-        height: 188px;
-        border-radius: 22px;
+        width: 126px;
+        height: 126px;
+        border-radius: 28px;
     }
 
     .card-copy {
         margin-top: 20px;
-        width: min(100%, 228px);
+        width: min(100%, 214px);
         max-width: none;
         padding-right: 0;
     }
 
     .card-copy strong {
         max-width: none;
-        font-size: 1.42rem;
+        font-size: 1.18rem;
         line-height: 1.12;
     }
 
     .pulse-ring {
-        width: 96px;
-        height: 96px;
+        width: 82px;
+        height: 82px;
         right: 18px;
         bottom: 20px;
         box-shadow:
