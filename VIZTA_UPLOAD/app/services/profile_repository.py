@@ -206,7 +206,6 @@ class ProfileRepository:
                 )
             except Exception:
                 return None, None
-
             session = getattr(auth_response, "session", None)
             user = getattr(auth_response, "user", None)
             if not session or not user:
@@ -235,7 +234,10 @@ class ProfileRepository:
             access_token = auth_state.get("access_token")
             if not access_token:
                 return None
-            user_response = self.anon_client.auth.get_user(access_token)
+            try:
+                user_response = self.anon_client.auth.get_user(access_token)
+            except Exception:
+                return None
             user = getattr(user_response, "user", None)
             if not user:
                 return None
