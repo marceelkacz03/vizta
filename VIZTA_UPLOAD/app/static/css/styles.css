@@ -80,7 +80,9 @@ svg {
 }
 
 .brand-mark {
-    font-size: 0.86rem;
+    font-size: clamp(1.15rem, 2vw, 1.8rem);
+    font-weight: 700;
+    letter-spacing: 0.18em;
     color: #f8f8f5;
 }
 
@@ -359,6 +361,8 @@ svg {
     display: inline-flex;
     margin-bottom: 24px;
     color: #d8d8d2;
+    font-size: 1.05rem;
+    font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
 }
@@ -632,18 +636,27 @@ svg {
 
 .avatar-editor {
     display: flex;
-    gap: 22px;
+    flex-direction: column;
+    gap: 26px;
     align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .avatar-editor__controls {
-    flex: 1;
+    width: min(100%, 520px);
 }
 
 .profile-avatar--large {
-    width: 112px;
-    height: 112px;
-    font-size: 2.3rem;
+    width: 220px;
+    height: 220px;
+    border-radius: 36px;
+    font-size: 4.5rem;
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.28);
+}
+
+.profile-avatar--large img {
+    border-radius: 36px;
 }
 
 .checkbox {
@@ -685,8 +698,7 @@ svg {
     .profile-intro,
     .profile-footer,
     .dashboard-header,
-    .dashboard-card--footer,
-    .avatar-editor {
+    .dashboard-card--footer {
         flex-direction: column;
         align-items: start;
     }
@@ -703,6 +715,10 @@ svg {
 
     .hero-card {
         min-height: 380px;
+    }
+
+    .avatar-editor {
+        align-items: center;
     }
 }
 
@@ -731,5 +747,60 @@ svg {
     .dashboard-header,
     .dashboard-card {
         border-radius: 24px;
+    }
+
+    .brand-bar {
+        align-items: start;
+        gap: 14px;
+    }
+
+    .brand-mark,
+    .back-link {
+        font-size: 1rem;
+        letter-spacing: 0.16em;
+    }
+
+    .hero-card {
+        min-height: 320px;
+        padding: 24px;
+    }
+
+    .card-copy {
+        left: 24px;
+        right: 24px;
+        bottom: 24px;
+    }
+
+    .card-copy strong {
+        max-width: none;
+        font-size: 1.45rem;
+        line-height: 1.12;
+    }
+
+    .pulse-ring {
+        width: 108px;
+        height: 108px;
+        right: 20px;
+        bottom: 126px;
+        box-shadow:
+            0 0 0 12px rgba(255, 255, 255, 0.03),
+            0 0 0 28px rgba(255, 255, 255, 0.02);
+    }
+
+    .dashboard-header,
+    .dashboard-card,
+    .auth-card {
+        padding: 20px;
+    }
+
+    .profile-avatar--large {
+        width: 168px;
+        height: 168px;
+        border-radius: 30px;
+        font-size: 3.3rem;
+    }
+
+    .profile-avatar--large img {
+        border-radius: 30px;
     }
 }
