@@ -33,7 +33,7 @@
     <section class="profile-card">
         <a class="back-link" href="/">VIZTA</a>
         <div class="profile-intro">
-            <div class="profile-avatar">
+            <div class="profile-avatar profile-avatar--profile">
                 {% if profile.avatar_url %}
                 <img src="{{ profile.avatar_url }}" alt="{{ profile.full_name }}">
                 {% else %}
@@ -60,7 +60,6 @@
         </div>
 
         <div class="profile-footer">
-            <span>Obsługiwane przez {{ app_name }}</span>
             {% if profile.card_code %}
             <span>Adres NFC: /c/{{ profile.card_code }}</span>
             {% endif %}
